@@ -12,7 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //Funciones
     function validar (e) {
-        console.log(e.target.value);
+        if (e.target.value.trim() === '') {
+            console.log('Vacio');
+            
+        } else {
+            console.log('Hay algo');
+        }
         
     }
     
