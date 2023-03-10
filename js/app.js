@@ -5,8 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const inputAsunto = document.querySelector('#asunto');
     const inputMensaje = document.querySelector('#mensaje');
 
-    
-    console.log(inputMensaje);
+    //Asignar eventos
+    inputEmail.addEventListener('blur', function (e) {
+        e.target.value;
+        
+        
+    })
     
 
 })
