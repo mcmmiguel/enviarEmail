@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    const email = {
+        email: '',
+        asunto: '',
+        mensaje: '',
+    }
+
+    
+
     //Seleccionar los elementos de la interfaz
     const inputEmail = document.querySelector('#email');
     const inputAsunto = document.querySelector('#asunto');
@@ -13,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //Funciones
     function validar (e) {
-        console.log(e.target.parentElement);
+        // console.log(e.target.parentElement);
 
         if (e.target.value.trim() === '') {
             mostrarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement);
@@ -24,6 +32,13 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         limpiarAlerta(e.target.parentElement);
+        //Asiganr valores al obejto de Email
+        email [e.target.id] = e.target.value.trim().toLowerCase();
+        console.log(email);
+
+        //Comprobar el objeto de email
+        comprobarEmail();
+        
     }
 
     function mostrarAlerta(mensaje, referencia) {
@@ -52,6 +67,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const resultado = regex.test(email)
         console.log(resultado);
         return resultado;
+        
+    }
+
+    function comprobarEmail() {
+        console.log(Object.values(email).includes(''));
+        
+        
+        console.log('Email');
         
     }
 
