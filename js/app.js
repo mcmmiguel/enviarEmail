@@ -19,7 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
             mostrarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement);
             return;
         } 
-        
+        if (e.target.id === 'email' && !validarEmail(e.target.value)) {
+            mostrarAlerta(`El email no es válido`, e.target.parentElement);
+            return;
+        }
         limpiarAlerta(e.target.parentElement);
     }
 
@@ -44,5 +47,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     
+    function validarEmail(email) {
+        const regex =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/; // Expresión regular para buscar un patron
+        const resultado = regex.test(email)
+        console.log(resultado);
+        return resultado;
+        
+    }
 
 })
