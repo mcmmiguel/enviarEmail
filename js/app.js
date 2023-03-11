@@ -26,6 +26,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function mostrarAlerta(mensaje, referencia) {
+        //Comprueba si ya existe una alerta
+        const alerta = referencia.querySelector('.bg-red-600');//Busca en el div que seleccione si hay bg-red-600
+
+        if(alerta) {
+            alerta.remove();
+        }
+        
         //Generar alerta en HTML
         const error = document.createElement('P'); //Creamos un Parrafo
         error.textContent = mensaje; // LE dimos este valor al Parrafo
