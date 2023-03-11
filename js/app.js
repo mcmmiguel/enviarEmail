@@ -13,10 +13,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //Funciones
     function validar (e) {
-        console.log(e.target.id);
+        console.log(e.target.parentElement);
+        
         
         if (e.target.value.trim() === '') {
-            mostrarAlerta(`El campo ${e.target.id} es obligatorio`);
+            mostrarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement);
             
         } else {
             console.log('Hay algo');
@@ -24,14 +25,14 @@ document.addEventListener('DOMContentLoaded', function () {
         
     }
 
-    function mostrarAlerta(mensaje) {
+    function mostrarAlerta(mensaje, referencia) {
         //Generar alerta en HTML
         const error = document.createElement('P'); //Creamos un Parrafo
         error.textContent = mensaje; // LE dimos este valor al Parrafo
         error.classList.add('bg-red-600', 'text-white', 'p-2', 'text-center'); //Clases para estilos de texto en Tailwind
 
         //Inyectar el Error al Formulario
-        formulario.appendChild(error);
+        referencia.appendChild(error);
     }
     
 
