@@ -14,12 +14,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const inputMensaje = document.querySelector('#mensaje');
     const formulario = document.querySelector('#formulario');
     const btnSubmit = document.querySelector('#formulario button[type="submit"]');
+    const btnReset = document.querySelector('#formulario button[type="reset"]')
 
     //Asignar eventos
-    inputEmail.addEventListener('input', validar)
-    inputAsunto.addEventListener('input', validar);
-    inputMensaje.addEventListener('input', validar);
+    inputEmail.addEventListener('blur', validar)
+    inputAsunto.addEventListener('blur', validar);
+    inputMensaje.addEventListener('blur', validar);
+    
+    btnReset.addEventListener('click', function(e) {
+        e.preventDefault();
 
+        //Reiniciar el objeto
+        email.email = '';
+        email.asunto = '';
+        email.mensaje = '';
+
+        formulario.reset();
+        comprobarEmail();
+    })
     //Funciones
     function validar (e) {
         // console.log(e.target.parentElement);
@@ -39,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
         limpiarAlerta(e.target.parentElement);
         //Asiganr valores al obejto de Email
         email [e.target.id] = e.target.value.trim().toLowerCase();
-        console.log(email);
 
         //Comprobar el objeto de email
         comprobarEmail();
@@ -76,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function comprobarEmail() {
-        console.log(email);
         
          if(Object.values(email).includes('')) {
             btnSubmit.classList.add('opacity-50');
