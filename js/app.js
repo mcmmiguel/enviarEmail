@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function comprobarEmail() {
         
-         if(Object.values(email).includes('')) {
+         if(email['email'] === '' || email['asunto'] === '' || email['mensaje'] === '' || email['cc'] !== '' && !validarEmail(email['cc'])) {
             btnSubmit.classList.add('opacity-50');
             btnSubmit.disabled = true;
             return;
